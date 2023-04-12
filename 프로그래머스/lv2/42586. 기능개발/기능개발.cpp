@@ -19,11 +19,11 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
         minus = progresses[index];
         for (int i = index; i < progresses.size(); i++) {
             progresses[i] -= minus;
-            cout << "//i : " << i << ", progresses[i] : " << progresses[i] << endl;
+            //cout << "//i : " << i << ", progresses[i] : " << progresses[i] << endl;
         }
         for (int i = index; i < progresses.size() && progresses[i] <= 0; i++) {
-            cout << "index: " << index << endl;
-            cout << "i : " << i << ", progresses[i] : " << progresses[i] << endl;
+            //cout << "index: " << index << endl;
+            //cout << "i : " << i << ", progresses[i] : " << progresses[i] << endl;
             complete++;
             temp++;
             index++;
