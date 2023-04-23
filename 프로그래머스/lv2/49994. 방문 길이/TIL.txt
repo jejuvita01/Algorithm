@@ -1,0 +1,11 @@
+vector<int> v(501); 
+
+v.size() == 501;
+
+for (int i = 0; i < v.size(); i++)
+했다가 500까지 i가 증가되었고, 
+아직 값이 push_back되지 않은 부분을 읽으려고 해서 
+segmentation fault (core dumped) 발생
+
+
+vector 초기화하면 size() 함수는 그 값을 return 한다는 것을 배웠다. 
