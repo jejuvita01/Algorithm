@@ -1,0 +1,6 @@
+set에는 find 함수가 내장되어서 (set_name).find() 가 가능하지만
+vector에는 내장되어 있지 않아서 계속 오류가 발생했다. 
+
+vector find를 하고 싶다면 <algorithm> 라이브러리를 추가하고
+find(시작범위, 끝 범위 + 1, 찾을 것) 
+이렇게 작성해야 한다. 
