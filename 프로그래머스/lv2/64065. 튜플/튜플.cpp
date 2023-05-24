@@ -11,7 +11,7 @@ bool compare(vector<int> a, vector<int> b) {
 
 vector<int> solution(string s) {
     vector<int> answer;
-    vector<vector<int>> num(100000);
+    vector<vector<int>> num(1000000);
     int index = -1;
     string tmp = "";
     
