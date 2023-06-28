@@ -1,0 +1,57 @@
+아래 복잡한 코드로 풀려고 시도해보았지만 계속 어딘가에 버그가 있어서 실패했다
+질문하기를 참고해 큐를 0으로 채워 넣고 매번 push, pop 하는 방식으로 풀었다
+다음에는 이 코드를 수정도 해보고, 원래대로 풀었던 방식으로도 풀고, 더 좋은 방식이 있는지도 생각해보자. 
+
+
+
+#include <string>
+#include <vector>
+#include <queue>
+#include <iostream>
+
+using namespace std;
+
+int solution(int bridge_length, int weight, vector<int> truck_weights) {
+    int answer = 0;
+    int index = 0;
+    int time = 0;
+    int current_weight = 0;
+    queue<int> on_bridge;
+    
+    on_bridge.push(truck_weights[index]);
+    current_weight += truck_weights[index];
+    time++;
+    answer++;
+    truck_weights[index] = answer;
+    index++;
+    while (!on_bridge.empty()) {
+        if (time >= bridge_length) {
+            current_weight -= on_bridge.front();
+            on_bridge.pop();
+            if (current_weight == 0)
+                time = 0;
+            else
+                time = bridge_length - (truck_weights[index - 1] - truck_weights[index - 2]);
+            // cout << 1 << "time: " << time << ", answer: " << answer << ", current_weight: " << current_weight << endl;
+        }
+        
+        if (index < truck_weights.size() && current_weight + truck_weights[index] <= weight) {
+            on_bridge.push(truck_weights[index]);
+            current_weight += truck_weights[index];
+            time++;
+            answer++;
+            truck_weights[index] = answer;
+            index++;
+            // cout << 2 << "time: " << time << ", answer: " << answer << ", current_weight: " << current_weight << endl;
+        }
+        else {
+            time++;
+            answer++;
+            // cout << 3 << "time: " << time << ", answer: " << answer << ", current_weight: " << current_weight << endl;
+        }
+    
+       //  cout << "time: " << time << ", answer: " << answer << endl;
+    }
+    
+    return answer;
+}
